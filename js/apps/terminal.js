@@ -30,7 +30,7 @@ Apps.terminal = {
     const commands = {
       help: () => print(
         "help          this list\n" +
-        "open <app>    launch app (assistant, sysmon, weather, news, markets, space, notes)\n" +
+        "open <app>    launch app (assistant, sysmon, weather, news, markets, space, outlook, notes)\n" +
         "close <app>   close app\n" +
         "time          current time\n" +
         "date          current date\n" +
@@ -56,7 +56,7 @@ Apps.terminal = {
         else print(`unknown app: ${arg}`, "t-err");
       },
       say: (arg) => {
-        if (window.BilqisVoice) BilqisVoice.speak(arg || "Yes, sir?");
+        if (window.BilqisVoice) BilqisVoice.speak(arg || "Yes, Grand Master Caan?");
         print("(speaking)", "t-ok");
       },
       ip: async () => {

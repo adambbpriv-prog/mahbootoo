@@ -1,6 +1,6 @@
 # B.I.L.Q.I.S. OS
 
-*Brilliantly Intelligent Lifelike Quantum Integrated System* — a Jarvis-style sci-fi HUD "operating system" that runs entirely in your browser. Bilqis (named after the legendary Queen of Sheba) speaks with a female voice and answers by voice or text.
+*Brilliantly Intelligent Lifelike Quantum Integrated System* — a Jarvis-style sci-fi HUD "operating system" that runs entirely in your browser. Bilqis (named after the legendary Queen of Sheba) speaks with a female voice (neural voices preferred where the browser has them), addresses you as Grand Master Caan, and answers by voice or text.
 
 ![status](https://img.shields.io/badge/systems-nominal-00d4ff) ![deps](https://img.shields.io/badge/dependencies-zero-3dffa0)
 
@@ -19,6 +19,7 @@
 | 🌦 Weather | [Open-Meteo](https://open-meteo.com) forecast + IP geolocation ([ipapi.co](https://ipapi.co)) |
 | 📰 News | [Hacker News API](https://github.com/HackerNews/API) top stories |
 | 📈 Markets | [CoinGecko](https://www.coingecko.com/en/api) live crypto prices |
+| 📧 Outlook | Mail & calendar via Outlook web deep links (no credentials stored) |
 | 🛰 Space | [Where The ISS At](https://wheretheiss.at/w/developer) real-time ISS telemetry |
 | 📊 System | Real browser telemetry: battery, JS heap, connection, cores |
 | ⌨ Terminal | Command console (`help`, `open <app>`, `ip`, `joke`, `say <text>`, …) |
@@ -43,6 +44,7 @@ python3 -m http.server 8000
 - "Where is the ISS?"
 - "What's the bitcoin price?"
 - "Who is Nikola Tesla?"
+- "Open outlook" / "Compose an email"
 - "Tell me a joke"
 - "Open terminal" / "System status"
 

@@ -34,7 +34,7 @@
     // greet
     const h = new Date().getHours();
     const part = h < 12 ? "morning" : h < 18 ? "afternoon" : "evening";
-    const greeting = `Good ${part}, sir. B.I.L.Q.I.S. is online and at your service.`;
+    const greeting = `Good ${part}, Grand Master Caan. B.I.L.Q.I.S. is online and at your service.`;
     setTimeout(() => {
       if (window.BilqisVoice) BilqisVoice.speak(greeting);
       const toast = document.getElementById("bilqis-toast");

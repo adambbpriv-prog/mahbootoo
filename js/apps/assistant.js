@@ -11,9 +11,9 @@ const BilqisBrain = {
     if (openMatch) {
       const map = { system: "sysmon", monitor: "sysmon", intel: "news", console: "terminal",
                     market: "markets", crypto: "markets", orbit: "space", iss: "space",
-                    note: "notes", chat: "assistant" };
+                    note: "notes", chat: "assistant", mail: "outlook", email: "outlook" };
       const name = map[openMatch[1]] || openMatch[1];
-      if (Apps[name]) { launchApp(name); return `Launching ${Apps[name].title}, sir.`; }
+      if (Apps[name]) { launchApp(name); return `Launching ${Apps[name].title}, Grand Master Caan.`; }
     }
     const closeMatch = low.match(/\bclose\s+(?:the\s+)?(\w+)/);
     if (closeMatch && Apps[closeMatch[1]]) {
@@ -23,7 +23,7 @@ const BilqisBrain = {
 
     // --- time & date ---
     if (/\b(time|clock)\b/.test(low) && /what|current|tell/.test(low) || low === "time")
-      return `The time is ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}, sir.`;
+      return `The time is ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}, Grand Master Caan.`;
     if (/\bdate|today\b/.test(low) && /what|which|tell/.test(low))
       return `Today is ${new Date().toLocaleDateString(undefined, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}.`;
 
@@ -32,7 +32,7 @@ const BilqisBrain = {
       launchApp("weather");
       const w = window.BilqisState && BilqisState.weather;
       if (w) return `Currently ${w.temp}°C with ${w.desc.toLowerCase()} in ${w.city}. Full report on screen.`;
-      return "Pulling up the atmospheric report now, sir.";
+      return "Pulling up the atmospheric report now, Grand Master Caan.";
     }
 
     // --- markets ---
@@ -45,10 +45,20 @@ const BilqisBrain = {
       } catch (e) { return "Exchange link is down; market panel opened for retry."; }
     }
 
+    // --- outlook / email ---
+    if (/\boutlook|email|e-mail|inbox|compose|calendar\b/.test(low)) {
+      launchApp("outlook");
+      if (/\bcompose|send|write\b/.test(low))
+        return "Outlook comms panel ready, Grand Master Caan. Fill in the message and I'll hand it to Outlook.";
+      if (/\bcalendar\b/.test(low))
+        return "Opening your calendar channel, Grand Master Caan.";
+      return "Outlook communications are on screen, Grand Master Caan.";
+    }
+
     // --- news ---
     if (/\bnews|headlines|stories|intel\b/.test(low)) {
       launchApp("news");
-      return "Bringing up the global intel feed, sir.";
+      return "Bringing up the global intel feed, Grand Master Caan.";
     }
 
     // --- ISS / space ---
@@ -67,7 +77,7 @@ const BilqisBrain = {
         const r = await fetch("https://official-joke-api.appspot.com/random_joke");
         const j = await r.json();
         return `${j.setup} ... ${j.punchline}`;
-      } catch (e) { return "My humor subroutines appear to be offline, sir."; }
+      } catch (e) { return "My humor subroutines appear to be offline, Grand Master Caan."; }
     }
 
     // --- knowledge: "who is X" / "what is X" via Wikipedia summary API ---
@@ -82,7 +92,7 @@ const BilqisBrain = {
           const d = await r.json();
           if (d.extract) return d.extract.split(". ").slice(0, 2).join(". ") + ".";
         }
-        return `I couldn't find reliable intel on "${topic}", sir.`;
+        return `I couldn't find reliable intel on "${topic}", Grand Master Caan.`;
       } catch (e) { return "Knowledge uplink unavailable at the moment."; }
     }
 
@@ -90,19 +100,19 @@ const BilqisBrain = {
     if (/\b(hello|hi|hey|good (morning|afternoon|evening))\b/.test(low)) {
       const h = new Date().getHours();
       const part = h < 12 ? "morning" : h < 18 ? "afternoon" : "evening";
-      return `Good ${part}, sir. All systems are operational. How may I assist?`;
+      return `Good ${part}, Grand Master Caan. All systems are operational. How may I assist?`;
     }
     if (/\bwho are you|your name\b/.test(low))
-      return "I am B.I.L.Q.I.S. — Brilliantly Intelligent Lifelike Quantum Integrated System. At your service, sir.";
-    if (/\bthank/.test(low)) return "Always a pleasure, sir.";
+      return "I am B.I.L.Q.I.S. — Brilliantly Intelligent Lifelike Quantum Integrated System. At your service, Grand Master Caan.";
+    if (/\bthank/.test(low)) return "Always a pleasure, Grand Master Caan.";
     if (/\bstatus|report|systems\b/.test(low)) {
       launchApp("sysmon");
       return `All systems nominal. ${navigator.onLine ? "Network uplink active." : "Warning: network offline."} ${navigator.hardwareConcurrency || "several"} processing threads available.`;
     }
     if (/\bhelp|can you do\b/.test(low))
-      return "Try: 'open weather', 'what's the news', 'bitcoin price', 'where is the ISS', 'who is Nikola Tesla', 'tell me a joke', 'system status', or 'what time is it'.";
+      return "Try: 'open weather', 'what's the news', 'bitcoin price', 'open outlook', 'where is the ISS', 'who is Nikola Tesla', 'tell me a joke', 'system status', or 'what time is it'.";
 
-    return "I'm not certain I follow, sir. Say 'help' for a list of things I can do.";
+    return "I'm not certain I follow, Grand Master Caan. Say 'help' for a list of things I can do.";
   },
 };
 
@@ -116,7 +126,7 @@ Apps.assistant = {
     body.innerHTML = `
       <div class="chat">
         <div class="chat-log" id="chat-log">
-          <div class="msg bilqis">Systems online. How may I be of service, sir?</div>
+          <div class="msg bilqis">Systems online. How may I be of service, Grand Master Caan?</div>
         </div>
         <div class="chat-in">
           <input id="chat-input" placeholder="Ask B.I.L.Q.I.S. anything..." autocomplete="off">
