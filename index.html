@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B.I.L.Q.I.S. OS</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%2300d4ff' stroke-width='6'/><circle cx='50' cy='50' r='16' fill='%2300d4ff'/></svg>">
+<link rel="stylesheet" href="css/bilqis.css">
+</head>
+<body>
+
+<!-- ============ BOOT SCREEN ============ -->
+<div id="boot-screen">
+  <div class="boot-reactor">
+    <div class="reactor-ring r1"></div>
+    <div class="reactor-ring r2"></div>
+    <div class="reactor-ring r3"></div>
+    <div class="reactor-core"></div>
+  </div>
+  <div class="boot-title">B.I.L.Q.I.S.</div>
+  <div class="boot-sub">Brilliantly Intelligent Lifelike Quantum Integrated System</div>
+  <div id="boot-log"></div>
+  <div class="boot-bar"><div id="boot-progress"></div></div>
+</div>
+
+<!-- ============ DESKTOP ============ -->
+<div id="desktop" class="hidden">
+
+  <!-- HUD background layers -->
+  <canvas id="hud-canvas"></canvas>
+  <div class="hud-grid"></div>
+  <div class="hud-vignette"></div>
+
+  <!-- Top bar -->
+  <header id="topbar">
+    <div class="topbar-left">
+      <div class="arc-mini"><div class="arc-mini-core"></div></div>
+      <span class="brand">B.I.L.Q.I.S. <span class="brand-ver">OS v1.0</span></span>
+    </div>
+    <div class="topbar-center">
+      <span id="status-line">ALL SYSTEMS NOMINAL</span>
+    </div>
+    <div class="topbar-right">
+      <span id="net-status" title="Network">◉ ONLINE</span>
+      <span id="clock-time">--:--:--</span>
+      <span id="clock-date"></span>
+    </div>
+  </header>
+
+  <!-- Dock / launcher -->
+  <nav id="dock">
+    <button class="dock-btn" data-app="assistant" title="Assistant">🧠<span>Assistant</span></button>
+    <button class="dock-btn" data-app="sysmon"    title="System Monitor">📊<span>System</span></button>
+    <button class="dock-btn" data-app="weather"   title="Weather">🌦<span>Weather</span></button>
+    <button class="dock-btn" data-app="news"      title="News Feed">📰<span>News</span></button>
+    <button class="dock-btn" data-app="markets"   title="Markets">📈<span>Markets</span></button>
+    <button class="dock-btn" data-app="space"     title="Space Tracker">🛰<span>Space</span></button>
+    <button class="dock-btn" data-app="outlook"   title="Outlook">📧<span>Outlook</span></button>
+    <button class="dock-btn" data-app="terminal"  title="Terminal">⌨<span>Terminal</span></button>
+    <button class="dock-btn" data-app="notes"     title="Notes">📝<span>Notes</span></button>
+  </nav>
+
+  <!-- Windows land here -->
+  <main id="window-layer"></main>
+
+  <!-- Central reactor: the voice of B.I.L.Q.I.S. -->
+  <div id="orb" title="Click and speak">
+    <div class="rr rr1"></div>
+    <div class="rr rr2"></div>
+    <div class="rr rr3"></div>
+    <div class="rseg rseg1"></div>
+    <div class="rseg rseg2"></div>
+    <div class="rseg rseg3"></div>
+    <div class="orb-core"></div>
+  </div>
+  <div id="orb-caption">TAP REACTOR · SPEAK YOUR COMMAND</div>
+
+  <!-- Live diagnostics feed -->
+  <aside id="syslog"></aside>
+
+  <!-- Assistant response toast -->
+  <div id="bilqis-toast" class="hidden"></div>
+</div>
+
+<script src="js/hud.js"></script>
+<script src="js/windows.js"></script>
+<script src="js/apps/sysmon.js"></script>
+<script src="js/apps/weather.js"></script>
+<script src="js/apps/news.js"></script>
+<script src="js/apps/markets.js"></script>
+<script src="js/apps/space.js"></script>
+<script src="js/apps/outlook.js"></script>
+<script src="js/apps/terminal.js"></script>
+<script src="js/apps/notes.js"></script>
+<script src="js/apps/assistant.js"></script>
+<script src="js/voice.js"></script>
+<script src="js/core.js"></script>
+</body>
+</html>
