@@ -90,17 +90,19 @@ window.BilqisVoice = (function () {
       listening = true;
       orb.classList.add("listening");
       document.getElementById("orb-caption").textContent = "LISTENING...";
+      if (window.BilqisLog) BilqisLog("VOICE CHANNEL OPEN", "sl-hi");
     };
     rec.onend = () => {
       listening = false;
       orb.classList.remove("listening");
-      document.getElementById("orb-caption").textContent = "CLICK ORB · VOICE COMMAND";
+      document.getElementById("orb-caption").textContent = "TAP REACTOR · SPEAK YOUR COMMAND";
     };
     rec.onerror = (e) => {
       if (e.error === "not-allowed") toast("Microphone access denied. Enable it to use voice commands.");
     };
     rec.onresult = (e) => {
       const text = e.results[0][0].transcript;
+      if (window.BilqisLog) BilqisLog("CMD :: " + text.toUpperCase(), "sl-hi");
       handleUtterance(text);
     };
     rec.start();
